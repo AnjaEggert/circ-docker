@@ -5,7 +5,7 @@ docker build . -t circ-im
 docker run --name="circ-dock" -p 8888:8888 -v .:/home/jovyan/analysis circ-im
 # copy URL into browser. Jupyter notebook opens
 # go to new -> Terminal
-# change to folder <analysis>
+# change to folder 'analysis'
 cd ~/analysis
 # you can now run the R scripts manually in the terminal, one after the other
 * Rscript sims.R &> sims.log
