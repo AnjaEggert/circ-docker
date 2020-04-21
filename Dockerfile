@@ -25,7 +25,7 @@ RUN conda config --add channels defaults \
  && fix-permissions $CONDA_DIR
 
 # Install package from local .tar.gz
-#CMD Rscript -e 'install.packages("~/analysis/HarmonicRegression_1.9999.tar.gz")'
+RUN Rscript -e 'install.packages("HarmonicRegression_1.9999.tar.gz")'
 
 USER $NB_UID
 
