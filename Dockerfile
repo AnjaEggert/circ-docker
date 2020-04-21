@@ -12,7 +12,7 @@ USER root
 
 RUN apt-get update && \
     apt-get upgrade -y --no-install-recommends \
-    make && \
+    apt-get install -y --no-install-recommends make && \
     rm -rf /var/lib/apt/lists/*
 
 # Add channels to install specific R-packages
