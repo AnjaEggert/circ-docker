@@ -11,8 +11,9 @@ LABEL description="Circadian analysis"
 USER root
 
 RUN apt-get update && \
-    apt-get upgrade -y --no-install-recommends \
+    apt-get upgrade -y --no-install-recommends && \
     apt-get install -y --no-install-recommends make && \
+    apt clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Add channels to install specific R-packages
@@ -25,7 +26,8 @@ RUN conda config --add channels defaults \
  && fix-permissions $CONDA_DIR
 
 # Install package from local .tar.gz
-RUN Rscript -e 'install.packages("HarmonicRegression_1.9999.tar.gz")'
+COPY HarmonicRegression_1.9999.tar.gz /tmp/HarmonicRegression_1.9999.tar.gz
+RUN Rscript -e 'install.packages("/tmp/HarmonicRegression_1.9999.tar.gz")'
 
 USER $NB_UID
 
